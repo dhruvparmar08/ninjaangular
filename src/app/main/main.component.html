@@ -1,0 +1,27 @@
+<p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+        Hello, {{name}}
+      </button>
+      <mat-menu #menu="matMenu">
+        <!-- <button mat-menu-item matSuffix><a [routerLink]="['/main/dashboard']" routerLinkActive="true"><mat-icon>dashboard_customize</mat-icon> Dashboard</a></button> -->
+        <!-- <button mat-menu-item matSuffix><a [routerLink]="['/main/profile']" routerLinkActive="true"><mat-icon>account_circle</mat-icon> Profile</a></button> -->
+        <!-- <button mat-menu-item matSuffix><a [routerLink]="['/main/User-details']" routerLinkActive="true">User-details</a></button> -->
+        <button mat-menu-item matSuffix (click)="logout()"><mat-icon>power_settings_new</mat-icon> Log Out</button>
+      </mat-menu>
+      <!-- <span id="home" (click)="openhome()">My App</span> -->
+      <span class="example-spacer"></span>
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button> -->
+      <!-- <button *ngIf="name" (click)="openprofile()" mat-button class="example-icon" aria-label="Example icon-button with share icon">
+        Hello, {{name}}
+      </button> -->
+      <button mat-icon-button title="logout" class="example-icon" (click)="logout()" aria-label="Example icon-button with share icon">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </mat-toolbar>
+</p>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

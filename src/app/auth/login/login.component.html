@@ -1,0 +1,60 @@
+<mat-card id="login_card">
+    <mat-card-header style="justify-content: center; margin-bottom: 10px;">
+      <mat-card-title style="color: #3f51b5;" matSuffix><mat-icon>login</mat-icon> Login Here</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+            <div id="login_details">
+              <ng-container *ngIf="!enable">
+                <form #loginForm="ngForm" (submit)="email_submit()" novalidate>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>E-mail</mat-label>
+                            <input matInput id="email" name="email" placeholder="example@xyz.com" #email="ngModel"
+                            [(ngModel)]="logindetails.email" required>
+                            <!-- <mat-icon matSuffix>alternate_email</mat-icon> -->
+                            <mat-error *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+                                Enter E-mail Address
+                            </mat-error>
+                            <mat-error *ngIf="email.hasError('email')">
+                              E-mail not valid
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="visible ? 'text' : 'password'" name="password" #password="ngModel"
+                            [(ngModel)]="logindetails.password" required>
+                            <button type="button" mat-icon-button matSuffix
+                            (click)="visible = !visible"
+                            matTooltip="Toggle Visibility">
+                            <mat-icon *ngIf="visible">
+                                visibility
+                            </mat-icon>
+                            <mat-icon *ngIf="!visible">
+                                visibility_off
+                            </mat-icon>
+                            </button>
+                            <mat-error *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+                                Enter Password
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button type="submit" mat-raised-button color="primary" style="width: 100%; margin-bottom: 10px;" [disabled]="!loginForm.valid" matSuffix>
+                            <mat-icon>login</mat-icon> Login
+                        </button>
+                        <!-- <button type="button" mat-raised-button color="accent" style="width: 100%;" (click)="forget()" matSuffix>
+                            <mat-icon>password</mat-icon> forget-password</button> -->
+                    </div>
+                </form>
+            </ng-container>
+            </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <!-- <div id="googlebtn">
+            <button type="button" mat-raised-button style="color: #3f51b5; width: 250px;" (click)="signInWithGoogle()" > Login With Google </button>
+        </div>  -->
+        <span>Are you new user ? &nbsp; <a [routerLink]="['/auth/register']" routerLinkActive="true">Register</a> &nbsp; now.</span>
+    </mat-card-actions>
+</mat-card>
